@@ -7,6 +7,31 @@
  * @package innova
  */
 
+//require get_template_directory() . '/inc/carbon-fields/custom-fields/custom-fields.php';
+
+
+use Carbon_Fields\Container;
+use Carbon_Fields\Field;
+
+add_action( 'carbon_fields_register_fields', 'crb_attach_theme_options' );
+function crb_attach_theme_options() {
+require_once __DIR__  . '/inc/carbon-fields/custom-fields/custom-fields.php';
+require_once __DIR__  . '/inc/carbon-fields/custom-fields/index-fields.php';
+}
+
+add_action( 'after_setup_theme', 'crb_load' );
+function crb_load() {
+//    require_once( ABSPATH . '/inc/carbon-fields/vendor/autoload.php' );
+require_once __DIR__  . '/inc/carbon-fields/vendor/autoload.php';
+    \Carbon_Fields\Carbon_Fields::boot();
+}
+
+
+
+
+
+
+
 if ( ! function_exists( 'innova_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -44,7 +69,7 @@ if ( ! function_exists( 'innova_setup' ) ) :
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'innova' ),
+			'menu-1' => esc_html__( 'Глвное меню в шапке сайта', 'innova' ),
 		) );
 
 		/*
@@ -119,16 +144,37 @@ add_action( 'widgets_init', 'innova_widgets_init' );
 /**
  * Enqueue scripts and styles.
  */
+
+
 function innova_scripts() {
-	wp_enqueue_style( 'innova-style', get_stylesheet_uri() );
+wp_enqueue_style( 'innova-style', get_stylesheet_uri() );
+wp_enqueue_style( 'innova-bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.css');
+wp_enqueue_style( 'innova-font-awesome', get_template_directory_uri() . '/assets/fonts/font-awesome/css/font-awesome.css');
+wp_enqueue_style( 'innova-ownerstyle', get_template_directory_uri() . '/assets/css/style.css');
+wp_enqueue_style( 'innova-nivo-lightbox', get_template_directory_uri() . '/assets/css/nivo-lightbox/nivo-lightbox.css');
+wp_enqueue_style( 'innova-nivo-lightbox-default', get_template_directory_uri() . '/assets/css/nivo-lightbox/default.css');
+wp_enqueue_style( 'innova-OpenSanslight', 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' );
+wp_enqueue_style( 'innova-OpenSans', 'https://fonts.googleapis.com/css?family=Montserrat:400,700');
 
-	wp_enqueue_script( 'innova-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'innova-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+wp_deregister_script( 'jquery');
+wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.1.11.1.js', array(),'',true);
+wp_enqueue_script( 'jquery');
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+
+wp_enqueue_script( 'innova-bootstrapjs', get_template_directory_uri() . '/assets/js/bootstrap.js', array('jquery'), '1.0', true );
+wp_enqueue_script( 'innova-SmoothScrolljs', get_template_directory_uri() . '/assets/js/SmoothScroll.js', array('jquery'), '1.0', true );
+wp_enqueue_script( 'innova-nivo-lightboxjs', get_template_directory_uri() . '/assets/js/nivo-lightbox.js', array('jquery'), '1.0', true );
+wp_enqueue_script( 'innova-jqBootstrapValidationjs', get_template_directory_uri() . '/assets/js/jqBootstrapValidation.js', array('jquery'), '1.0', true );
+wp_enqueue_script( 'innova-mainjs', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), '1.0', true );
+
+
+
+	// wp_enqueue_script( 'innova-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+
+	// if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+	// 	wp_enqueue_script( 'comment-reply' );
+	// }
 }
 add_action( 'wp_enqueue_scripts', 'innova_scripts' );
 
@@ -152,10 +198,11 @@ require get_template_directory() . '/inc/template-functions.php';
  */
 require get_template_directory() . '/inc/customizer.php';
 
+
 /**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
-
+require get_template_directory() . '/inc/post-type.php';
