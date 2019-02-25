@@ -310,14 +310,19 @@ get_header();?>
 
 
         <div class="contact-item">
-        <h4>Contact Info</h4>
-        <p><span>Address</span>4321 California St,<br>
-          San Francisco, CA 12345</p>
+<?php if(carbon_get_theme_option('footer_contact_title')){?>
+        <h4><?php echo  esc_attr(carbon_get_theme_option('footer_contact_title')); ?></h4>
+<?php } ?>
+
+<?php if(carbon_get_theme_option('footer_contact_adress')){
+  echo wpautop( carbon_get_theme_option( 'footer_contact_adress' ) );
+ } ?>
+
       </div>
 
 
      <div class="contact-item">
-        <p><span>Phone</span> +1 123 456 1234</p>
+        <p><span>Телефон</span> +1 123 456 1234</p>
       </div>
 
      <div class="contact-item">
@@ -327,12 +332,34 @@ get_header();?>
     <div class="col-md-12">
       <div class="row">
         <div class="social">
-          <ul>
+<ul>
+ <?php
+ $table1 = carbon_get_theme_option( 'slide_socialspytwo', 'complex' );
+print_r(  $table1 );
+ if ( ! empty( $table1 ) ):
+?>
+<?php foreach ( $table1 as $tr1 ): ?>
+
+
+
+<li><a href="<?php echo $tr1['social_icon_two'] ?>">
+  <i class="<?php echo $tr1['social_links_two'] ?>"></i></a></li>
+
+
+<?php endforeach; ?>
+<?php endif; ?>
+  </ul>
+
+
+      <!--     <ul>
             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+
             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
             <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
             <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-          </ul>
+          </ul> -->
         </div>
       </div>
     </div>

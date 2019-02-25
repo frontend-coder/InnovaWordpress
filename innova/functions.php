@@ -16,8 +16,13 @@ use Carbon_Fields\Field;
 add_action( 'carbon_fields_register_fields', 'crb_attach_theme_options' );
 function crb_attach_theme_options() {
 require_once __DIR__  . '/inc/carbon-fields/custom-fields/custom-fields.php';
+
+}
+add_action( 'carbon_fields_register_fields', 'crb_attach_post_meta' );
+function crb_attach_post_meta() {
 require_once __DIR__  . '/inc/carbon-fields/custom-fields/index-fields.php';
 }
+
 
 add_action( 'after_setup_theme', 'crb_load' );
 function crb_load() {
@@ -25,6 +30,21 @@ function crb_load() {
 require_once __DIR__  . '/inc/carbon-fields/vendor/autoload.php';
     \Carbon_Fields\Carbon_Fields::boot();
 }
+
+add_action( 'carbon_fields_post_meta_container_saved', 'crb_after_save_event' );
+function crb_after_save_event( $post_id ) {
+    if ( get_post_type( $post_id ) !== 'crb_event' ) {
+        return false;
+    }
+    $event_date = carbon_get_post_meta( $post_id, 'crb_event_date' );
+    if ( $event_date ) {
+        $timestamp = strtotime( $event_date );
+        update_post_meta( $post_id, '_crb_event_timestamp', $timestamp );
+    }
+}
+
+// carbon_fields_theme_options_container_saved
+
 
 
 
@@ -206,3 +226,33 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 require get_template_directory() . '/inc/post-type.php';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function custom_tinymce_settings($settings) {
+if (!isset($settings['extended_valid_elements'])) {
+ $settings['extended_valid_elements'] = '';
+ } else {
+ $settings['extended_valid_elements'] .= ',';
+ }
+if (!isset($settings['valid_children'])) {
+ $settings['valid_children'] = '';
+ } else {
+ $settings['valid_children'] .= ',';
+ }
+$settings['extended_valid_elements'] .= "meta[*],span[*]";
+ $settings['valid_children'] .= "+span[meta]";
+return $settings;
+ }
+add_filter('tiny_mce_before_init', 'custom_tinymce_settings');

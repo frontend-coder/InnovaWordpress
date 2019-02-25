@@ -22,10 +22,9 @@
 
 <!-- Favicons
     ================================================== -->
-<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="<?php bloginfo('template_url'); ?>/assets/img/favicon.ico">
-
+<?php if(carbon_get_theme_option('site_favicon')){?>
+<link rel="shortcut icon" href="<?php echo esc_url(carbon_get_theme_option('site_favicon')); ?>" type="image/x-icon">
+<?php } ?>
 
 <!-- Bootstrap -->
 <!-- <link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
@@ -56,17 +55,28 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a class="navbar-brand page-scroll" href="#page-top">Innova</a>
-      <div class="phone"><span>Call Today</span>
-<!-- <?php echo str_replace(array( " ", "(", ")", "-"), "", esc_attr($cih_tell)); ?> -->
-<a href="tell:320-123-4321">320-123-4321</a>
+<?php if(carbon_get_theme_option('site_logo')){?>
+      <a class="navbar-brand page-scroll" href="#page-top"><?php echo esc_attr(carbon_get_theme_option('site_logo')); ?></a>
+  <?php } else { ?>
+<?php echo 'innova'; ?>
+<?php } ?>
+
+
+      <div class="phone">
+<?php if(carbon_get_theme_option('header_voice')){?>
+        <span><?php echo  esc_attr(carbon_get_theme_option('header_voice')); ?></span>
+<?php } ?>
+<?php if(carbon_get_theme_option('header_phpne')){
+$header_phpne = carbon_get_theme_option('header_phpne');
+?>
+<a href="tell:<?php echo str_replace(array( " ", "(", ")", "-"), "", esc_attr($header_phpne)); ?>"><?php echo esc_attr($header_phpne); ?></a>
+<?php } ?>
+
     </div>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-
 	<?php
 			wp_nav_menu( array(
 				'theme_location' => 'menu-1',

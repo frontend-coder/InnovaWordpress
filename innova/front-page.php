@@ -113,87 +113,25 @@ get_header();?>
     </div>
     <div class="row">
       <div class="portfolio-items">
-        <div class="col-sm-6 col-md-4 col-lg-4">
+
+<?php
+ $table3 = carbon_get_theme_option('slide_our_works');
+ ?>
+  <?php
+ if ( $table3 ):
+ foreach ( $table3 as $tr3 ): ?>
+       <div class="col-sm-6 col-md-4 col-lg-4">
           <div class="portfolio-item">
-            <div class="hover-bg"> <a href="<?php bloginfo('template_url'); ?>/assets/img/portfolio/01-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
+            <div class="hover-bg"> <a href="<?php echo $tr3['our_works_photo']; ?>" title="<?php echo $tr3['our_works_name']; ?>" data-lightbox-gallery="gallery1">
               <div class="hover-text">
-                <h4>Lorem Ipsum</h4>
+                <h4><?php echo $tr3['our_works_name']; ?></h4>
               </div>
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/01-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              <img src="<?php echo $tr3['our_works_photo']; ?>" class="img-responsive" alt="<?php echo $tr3['our_works_name']; ?>"> </a> </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="<?php bloginfo('template_url'); ?>/assets/img/portfolio/02-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Adipiscing Elit</h4>
-              </div>
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/02-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="<?php bloginfo('template_url'); ?>/assets/img/portfolio/03-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Lorem Ipsum</h4>
-              </div>
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/03-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="<?php bloginfo('template_url'); ?>/assets/img/portfolio/04-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Lorem Ipsum</h4>
-              </div>
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/04-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="<?php bloginfo('template_url'); ?>/assets/img/portfolio/05-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Adipiscing Elit</h4>
-              </div>
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/05-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="<?php bloginfo('template_url'); ?>/assets/img/portfolio/06-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dolor Sit</h4>
-              </div>
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/06-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="<?php bloginfo('template_url'); ?>/assets/img/portfolio/07-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dolor Sit</h4>
-              </div>
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/07-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="<?php bloginfo('template_url'); ?>/assets/img/portfolio/08-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Lorem Ipsum</h4>
-              </div>
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/08-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="<?php bloginfo('template_url'); ?>/assets/img/portfolio/09-large.jpg" title="Project Title" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Adipiscing Elit</h4>
-              </div>
-              <img src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/09-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
+<?php endforeach; ?>
+<?php endif; ?>
+
       </div>
     </div>
   </div>
@@ -202,98 +140,96 @@ get_header();?>
 <div id="testimonials">
   <div class="container">
     <div class="section-title">
-      <h2>Testimonials</h2>
+       <?php if(carbon_get_theme_option('thestimonials_title')){?>
+      <h2><?php echo  esc_attr(carbon_get_theme_option('thestimonials_title')); ?></h2>
+      <?php } ?>
     </div>
     <div class="row">
+
+<?php
+ $table3 = carbon_get_theme_option('slide_thestimonials');
+// var_dump($table3);
+
+ ?>
+  <?php
+ if ( $table3 ):
+ foreach ( $table3 as $tr3 ): ?>
       <div class="col-md-4">
         <div class="testimonial">
-          <div class="testimonial-image"> <img src="<?php bloginfo('template_url'); ?>/assets/img/testimonials/01.jpg" alt=""> </div>
+          <div class="testimonial-image"> <img src="<?php echo $tr3['thestimonials_photo']; ?>" alt="Отзыв от <?php echo $tr3['thestimonials_name']; ?>"> </div>
           <div class="testimonial-content">
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."</p>
-            <div class="testimonial-meta"> - John Doe </div>
+            <p><?php echo $tr3['thestimonials_text']; ?></p>
+            <div class="testimonial-meta"> - <?php echo $tr3['thestimonials_name']; ?> </div>
           </div>
+<div class="per__social">
+
+<ul>
+<?php
+ $table555 = carbon_get_theme_option('slide_socialspytwo2');
+var_dump($table555);
+print_r($table555);
+?>
+  <?php
+ if (  ! empty( $table555) ):
+ foreach ( $table555 as $tr555 ): ?>
+  <li><i class="<?php echo $tr555['social_icon_two2']; ?>"></i></li>
+  <?php endforeach; ?>
+  <?php endif; ?>
+  </ul>
+ </div>
+
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="testimonial">
-          <div class="testimonial-image"> <img src="<?php bloginfo('template_url'); ?>/assets/img/testimonials/02.jpg" alt=""> </div>
-          <div class="testimonial-content">
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis."</p>
-            <div class="testimonial-meta"> - Johnathan Doe </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="testimonial">
-          <div class="testimonial-image"> <img src="<?php bloginfo('template_url'); ?>/assets/img/testimonials/03.jpg" alt=""> </div>
-          <div class="testimonial-content">
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."</p>
-            <div class="testimonial-meta"> - John Doe </div>
-          </div>
-        </div>
-      </div>
-      <div class="row"> </div>
-      <div class="col-md-4">
-        <div class="testimonial">
-          <div class="testimonial-image"> <img src="<?php bloginfo('template_url'); ?>/assets/img/testimonials/04.jpg" alt=""> </div>
-          <div class="testimonial-content">
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."</p>
-            <div class="testimonial-meta"> - Johnathan Doe </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="testimonial">
-          <div class="testimonial-image"> <img src="<?php bloginfo('template_url'); ?>/assets/img/testimonials/05.jpg" alt=""> </div>
-          <div class="testimonial-content">
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."</p>
-            <div class="testimonial-meta"> - John Doe </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="testimonial">
-          <div class="testimonial-image"> <img src="<?php bloginfo('template_url'); ?>/assets/img/testimonials/06.jpg" alt=""> </div>
-          <div class="testimonial-content">
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis."</p>
-            <div class="testimonial-meta"> - Johnathan Doe </div>
-          </div>
-        </div>
-      </div>
+<?php endforeach; ?>
+<?php endif; ?>
+
     </div>
   </div>
 </div>
 <!-- Contact Section -->
+<?php
+ $crb_slides = carbon_get_theme_option('crb_slides');
+$slide_fragments = carbon_get_theme_option('slide_fragments');
+print_r($crb_slides);
+?>
+<?php
+if (  ! empty( $crb_slides) ):
+ foreach ( $crb_slides as $crb ): ?>
+<div>
+  <p><?php echo $crb['image']; ?></p>
+<ul>
+  <?php  foreach ( $crb_slides as $crb ): ?>
+  <li><?php echo $crb['fragment_text']; ?>^<?php echo $crb['fragment_position']; ?> </li>
+<?php endforeach; ?>
+</ul>
+</div>
+ <?php endforeach; ?>
+  <?php endif; ?>
+
+
+
+
+
+
+
+
+
+
 <div id="contact">
   <div class="container">
     <div class="col-md-8">
       <div class="row">
         <div class="section-title">
-          <h2>Get In Touch</h2>
-          <p>Please fill out the form below to send us an email and we will get back to you as soon as possible.</p>
+   <?php if(carbon_get_theme_option('footer_contactform_title')){?>
+          <h2><?php echo  esc_attr(carbon_get_theme_option('footer_contactform_title')); ?></h2>
+ <?php } ?>
+<?php if(carbon_get_theme_option('footer_contactform_descr')){?>
+  <p> <?php echo  esc_attr(carbon_get_theme_option('footer_contactform_descr')); ?></p>
+ <?php } ?>
+  </div>
+        <div>
+<? echo do_shortcode( '[contact-form-7 id="16" title="главная форма"]');  ?>
         </div>
-        <form name="sentMessage" id="contactForm" novalidate>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <input type="text" id="name" class="form-control" placeholder="Name" required="required">
-                <p class="help-block text-danger"></p>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <input type="email" id="email" class="form-control" placeholder="Email" required="required">
-                <p class="help-block text-danger"></p>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <textarea name="message" id="message" class="form-control" rows="4" placeholder="Message" required></textarea>
-            <p class="help-block text-danger"></p>
-          </div>
-          <div id="success"></div>
-          <button type="submit" class="btn btn-custom btn-lg">Send Message</button>
-        </form>
       </div>
     </div>
     <div class="col-md-3 col-md-offset-1 contact-info">
@@ -302,30 +238,63 @@ get_header();?>
 
 
         <div class="contact-item">
-        <h4>Contact Info</h4>
-        <p><span>Address</span>4321 California St,<br>
-          San Francisco, CA 12345</p>
+          <?php if(carbon_get_theme_option('footer_contact_title')){?>
+        <h4><?php echo  esc_attr(carbon_get_theme_option('footer_contact_title')); ?></h4>
+<?php } ?>
+<?php if(carbon_get_theme_option('footer_contact_adress')){
+  echo wpautop( carbon_get_theme_option( 'footer_contact_adress' ) );
+ } ?>
+
       </div>
 
 
      <div class="contact-item">
-        <p><span>Phone</span> +1 123 456 1234</p>
+       <?php if(carbon_get_theme_option('footer_contact_phone')){?>
+
+        <p><span>Телефон</span>
+            <?php echo  esc_attr(carbon_get_theme_option('header_phpne')); ?><br>
+         <?php echo  esc_attr(carbon_get_theme_option('footer_contact_phone')); ?></p>
+<?php } ?>
       </div>
 
      <div class="contact-item">
-        <p><span>Email</span> info@company.com</p>
+   <?php if(carbon_get_theme_option('footer_contact_email')){?>
+        <p><span>Email</span> <?php echo  esc_attr(carbon_get_theme_option('footer_contact_email')); ?></p>
+<?php } ?>
       </div>
     </div>
     <div class="col-md-12">
       <div class="row">
+ <!--        <div class="social">
+ <ul>
+
+ <?php
+ $table1 = carbon_get_post_meta( get_the_ID(), 'slide_socialspyfoure' );
+ ?>
+  <?php
+ if ( $table1 ):
+ foreach ( $table1 as $tr1 ): ?>
+ <li><a target="_blank" href="<?php echo $tr1['social_links_foure']; ?>"><i class="<?php echo $tr1['social_icon_foure']; ?>"></i></a></li>
+<?php endforeach; ?>
+<?php endif; ?>
+  </ul>
+        </div> -->
+
         <div class="social">
-          <ul>
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-          </ul>
+ <ul>
+
+ <?php
+ $table2 = carbon_get_theme_option('slide_socialspytwo');
+ ?>
+  <?php
+ if ( $table2 ):
+ foreach ( $table2 as $tr2 ): ?>
+ <li><a target="_blank" href="<?php echo $tr2['social_links_two']; ?>"><i class="<?php echo $tr2['social_icon_two']; ?>"></i></a></li>
+<?php endforeach; ?>
+<?php endif; ?>
+  </ul>
         </div>
+
       </div>
     </div>
   </div>

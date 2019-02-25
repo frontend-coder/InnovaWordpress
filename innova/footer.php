@@ -14,7 +14,12 @@
 <!-- Footer Section -->
 <div id="footer">
   <div class="container text-center">
-    <p>&copy; 2017 INNOVA. Design by <a href="http://www.templatewire.com" rel="nofollow">TemplateWire</a></p>
+  <?php if(carbon_get_theme_option('footer_copyright')){
+$footer_copyright = carbon_get_theme_option('footer_copyright');
+
+  	?>
+  <?php echo wpautop($footer_copyright); ?>
+<?php } ?>
   </div>
 </div>
 <!--

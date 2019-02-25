@@ -1,0 +1,4 @@
+[contact-form-7 id="16" title="главная форма"]
+
+
+<div class="row"><div class="col-md-6"><div class="form-group">[text text-918 id:name class:form-control placeholder "Name"]<p class="help-block text-danger"></p></div></div><div class="col-md-6"><div class="form-group">[email* email-732 id:email class:form-control placeholder "Email"]<p class="help-block text-danger"></p></div></div></div><div class="form-group">[textarea* textarea-842 id:message class:form-control placeholder "Message"]<p class="help-block text-danger"></p></div><div id="success"></div>[submit id:id_n class:btn class:btn-custom class:btn-lg "Send Message"]
