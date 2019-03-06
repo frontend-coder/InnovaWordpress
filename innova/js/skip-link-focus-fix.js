@@ -8,7 +8,7 @@
 ( function() {
 	var isIe = /(trident|msie)/i.test( navigator.userAgent );
 
-	if ( isIe && document.getElementById && window.addEventListener ) {
+	if( isIe && document.getElementById && window.addEventListener ) {
 		window.addEventListener( 'hashchange', function() {
 			var id = location.hash.substring( 1 ),
 				element;
