@@ -142,7 +142,7 @@ Container::make( 'theme_options', 'Thestimonials' )
 	->set_help_text( 'Введите короткое название блока с отзывами.' ),
 ))
 ->add_tab(__('Отзывы'), array(
-  Field::make( 'complex', 'slide_thestimonials', 'Перечень отзыввов' )
+  Field::make( 'complex', 'slide_thestimonials', 'Перечень отзывов' )
   ->setup_labels( $assistants_labels )
   ->set_collapsed( true )
   ->add_fields( array(
@@ -189,8 +189,9 @@ Container::make( 'theme_options', 'Footer option theme' )
 ))
 
 ->add_tab(__('Сети'), array(
-  Field::make( 'complex', 'slide_socialspytwo' )
+  Field::make( 'complex', 'slide_socialspytwo', 'Перечень сетей' )
   ->setup_labels( $assistants_labels )
+  ->set_collapsed( true )
   ->add_fields( array(
     Field::make( 'text', 'social_icon_two', 'Иконка сети' )->set_width(50)
     ->set_help_text( 'Вы можете определить иконку социальной сети исходя из следующего набора: icon-pinterest, icon-linkedin, icon-flickr, icon-dribbble, icon-skype, icon-instagram, icon-pinterest, icon-twitter, icon-github, icon-vk, icon-facebook.' ),

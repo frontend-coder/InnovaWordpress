@@ -15,42 +15,36 @@ use Carbon_Fields\Field;
 
 add_action( 'carbon_fields_register_fields', 'crb_attach_theme_options' );
 function crb_attach_theme_options() {
-require_once __DIR__  . '/inc/carbon-fields/custom-fields/custom-fields.php';
+	require_once __DIR__  . '/inc/carbon-fields/custom-fields/custom-fields.php';
+}
 
-}
-add_action( 'carbon_fields_register_fields', 'crb_attach_post_meta' );
-function crb_attach_post_meta() {
-require_once __DIR__  . '/inc/carbon-fields/custom-fields/index-fields.php';
-}
+
+// add_action( 'carbon_fields_register_fields', 'crb_attach_post_meta' );
+// function crb_attach_post_meta() {
+// require_once __DIR__  . '/inc/carbon-fields/custom-fields/index-fields.php';
+// }
 
 
 add_action( 'after_setup_theme', 'crb_load' );
 function crb_load() {
 //    require_once( ABSPATH . '/inc/carbon-fields/vendor/autoload.php' );
-require_once __DIR__  . '/inc/carbon-fields/vendor/autoload.php';
-    \Carbon_Fields\Carbon_Fields::boot();
+	require_once __DIR__  . '/inc/carbon-fields/vendor/autoload.php';
+	\Carbon_Fields\Carbon_Fields::boot();
 }
 
 add_action( 'carbon_fields_post_meta_container_saved', 'crb_after_save_event' );
 function crb_after_save_event( $post_id ) {
-    if ( get_post_type( $post_id ) !== 'crb_event' ) {
-        return false;
-    }
-    $event_date = carbon_get_post_meta( $post_id, 'crb_event_date' );
-    if ( $event_date ) {
-        $timestamp = strtotime( $event_date );
-        update_post_meta( $post_id, '_crb_event_timestamp', $timestamp );
-    }
+	if ( get_post_type( $post_id ) !== 'crb_event' ) {
+		return false;
+	}
+	$event_date = carbon_get_post_meta( $post_id, 'crb_event_date' );
+	if ( $event_date ) {
+		$timestamp = strtotime( $event_date );
+		update_post_meta( $post_id, '_crb_event_timestamp', $timestamp );
+	}
 }
 
 // carbon_fields_theme_options_container_saved
-
-
-
-
-
-
-
 
 if ( ! function_exists( 'innova_setup' ) ) :
 	/**
@@ -167,28 +161,24 @@ add_action( 'widgets_init', 'innova_widgets_init' );
 
 
 function innova_scripts() {
-wp_enqueue_style( 'innova-style', get_stylesheet_uri() );
-wp_enqueue_style( 'innova-bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.css');
-wp_enqueue_style( 'innova-font-awesome', get_template_directory_uri() . '/assets/fonts/font-awesome/css/font-awesome.css');
-wp_enqueue_style( 'innova-ownerstyle', get_template_directory_uri() . '/assets/css/style.css');
-wp_enqueue_style( 'innova-nivo-lightbox', get_template_directory_uri() . '/assets/css/nivo-lightbox/nivo-lightbox.css');
-wp_enqueue_style( 'innova-nivo-lightbox-default', get_template_directory_uri() . '/assets/css/nivo-lightbox/default.css');
-wp_enqueue_style( 'innova-OpenSanslight', 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' );
-wp_enqueue_style( 'innova-OpenSans', 'https://fonts.googleapis.com/css?family=Montserrat:400,700');
+	wp_enqueue_style( 'innova-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'innova-bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.css');
+	wp_enqueue_style( 'innova-font-awesome', get_template_directory_uri() . '/assets/fonts/font-awesome/css/font-awesome.css');
+	wp_enqueue_style( 'innova-ownerstyle', get_template_directory_uri() . '/assets/css/style.css');
+	wp_enqueue_style( 'innova-nivo-lightbox', get_template_directory_uri() . '/assets/css/nivo-lightbox/nivo-lightbox.css');
+	wp_enqueue_style( 'innova-nivo-lightbox-default', get_template_directory_uri() . '/assets/css/nivo-lightbox/default.css');
+	wp_enqueue_style( 'innova-OpenSanslight', 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' );
+	wp_enqueue_style( 'innova-OpenSans', 'https://fonts.googleapis.com/css?family=Montserrat:400,700');
 
+	wp_deregister_script( 'jquery');
+	wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.1.11.1.js', array(),'',true);
+	wp_enqueue_script( 'jquery');
 
-wp_deregister_script( 'jquery');
-wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.1.11.1.js', array(),'',true);
-wp_enqueue_script( 'jquery');
-
-
-wp_enqueue_script( 'innova-bootstrapjs', get_template_directory_uri() . '/assets/js/bootstrap.js', array('jquery'), '1.0', true );
-wp_enqueue_script( 'innova-SmoothScrolljs', get_template_directory_uri() . '/assets/js/SmoothScroll.js', array('jquery'), '1.0', true );
-wp_enqueue_script( 'innova-nivo-lightboxjs', get_template_directory_uri() . '/assets/js/nivo-lightbox.js', array('jquery'), '1.0', true );
-wp_enqueue_script( 'innova-jqBootstrapValidationjs', get_template_directory_uri() . '/assets/js/jqBootstrapValidation.js', array('jquery'), '1.0', true );
-wp_enqueue_script( 'innova-mainjs', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), '1.0', true );
-
-
+	wp_enqueue_script( 'innova-bootstrapjs', get_template_directory_uri() . '/assets/js/bootstrap.js', array('jquery'), '1.0', true );
+	wp_enqueue_script( 'innova-SmoothScrolljs', get_template_directory_uri() . '/assets/js/SmoothScroll.js', array('jquery'), '1.0', true );
+	wp_enqueue_script( 'innova-nivo-lightboxjs', get_template_directory_uri() . '/assets/js/nivo-lightbox.js', array('jquery'), '1.0', true );
+	wp_enqueue_script( 'innova-jqBootstrapValidationjs', get_template_directory_uri() . '/assets/js/jqBootstrapValidation.js', array('jquery'), '1.0', true );
+	wp_enqueue_script( 'innova-mainjs', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), '1.0', true );
 
 	// wp_enqueue_script( 'innova-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
@@ -227,38 +217,22 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 }
 //require get_template_directory() . '/inc/post-type.php';
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 function custom_tinymce_settings($settings) {
-if (!isset($settings['extended_valid_elements'])) {
- $settings['extended_valid_elements'] = '';
- } else {
- $settings['extended_valid_elements'] .= ',';
- }
-if (!isset($settings['valid_children'])) {
- $settings['valid_children'] = '';
- } else {
- $settings['valid_children'] .= ',';
- }
-$settings['extended_valid_elements'] .= "meta[*],span[*]";
- $settings['valid_children'] .= "+span[meta]";
-return $settings;
- }
+	if (!isset($settings['extended_valid_elements'])) {
+		$settings['extended_valid_elements'] = '';
+	} else {
+		$settings['extended_valid_elements'] .= ',';
+	}
+	if (!isset($settings['valid_children'])) {
+		$settings['valid_children'] = '';
+	} else {
+		$settings['valid_children'] .= ',';
+	}
+	$settings['extended_valid_elements'] .= "meta[*],span[*]";
+	$settings['valid_children'] .= "+span[meta]";
+	return $settings;
+}
 add_filter('tiny_mce_before_init', 'custom_tinymce_settings');
-
-
-
 
 function innova_debug($data) {
 	echo '<pre>' . print_r ($data, 1) . '</pre>';

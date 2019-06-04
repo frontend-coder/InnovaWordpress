@@ -33,8 +33,6 @@ get_header();?>
 </div>
 </div>
 
-
-
 <!-- About Section -->
 <div id="about">
   <div class="container">
@@ -45,11 +43,7 @@ get_header();?>
    <?php if(carbon_get_theme_option('who_we_are_photo')){?>
         <img src="<?php echo  esc_url(carbon_get_theme_option('who_we_are_photo')); ?>" class="img-responsive" alt="">
     <?php } ?>
-
-
-
 </div>
-
 
 <div class="about_box_item">
       <div class="about-text">
@@ -76,20 +70,8 @@ get_header();?>
      </ul>
    </div>
  </div>
-
-
-
 </div>
-
-
-
-
 </div>
-
-
-
-
-
 </div>
 </div>
 </div>
@@ -120,7 +102,6 @@ get_header();?>
         </div>
       <?php endforeach; ?>
     <?php endif; ?>
-
   </div>
 </div>
 </div>
@@ -184,10 +165,8 @@ get_header();?>
           </div>
         </div>
       </div>
-
   <?php endforeach; ?>
   <?php endif; ?>
-
 </div>
 </div>
 </div>
@@ -198,10 +177,8 @@ $footer_contactform_shotcode = carbon_get_theme_option('footer_contactform_shotc
          innova_debug($footer_contactform_shotcode);
          ?> -->
 
-
 <div id="contact">
   <div class="container">
-
     <div class="row">
       <div class="contact_block">
         <div class="contact_block_left">
@@ -219,8 +196,6 @@ $footer_contactform_shotcode = carbon_get_theme_option('footer_contactform_shotc
         </div>
         <?php } ?>
       </div>
-
-
 
       <div class="contact_block_right">
         <div class="contact-item">
@@ -246,7 +221,6 @@ $footer_contactform_shotcode = carbon_get_theme_option('footer_contactform_shotc
     </div>
   </div>
 </div>
-
 
  <div class="row">
     <div class="social">
