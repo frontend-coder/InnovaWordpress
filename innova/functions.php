@@ -256,3 +256,10 @@ $settings['extended_valid_elements'] .= "meta[*],span[*]";
 return $settings;
  }
 add_filter('tiny_mce_before_init', 'custom_tinymce_settings');
+
+
+
+
+function innova_debug($data) {
+	echo '<pre>' . print_r ($data, 1) . '</pre>';
+}

@@ -193,6 +193,11 @@ get_header();?>
 </div>
 </div>
 <!-- Contact Section -->
+<!--      <?php
+$footer_contactform_shotcode = carbon_get_theme_option('footer_contactform_shotcode');
+         innova_debug($footer_contactform_shotcode);
+         ?> -->
+
 
 <div id="contact">
   <div class="container">
@@ -208,10 +213,14 @@ get_header();?>
             <p> <?php echo  esc_attr(carbon_get_theme_option('footer_contactform_descr')); ?></p>
           <?php } ?>
         </div>
-        <div>
-          <? echo do_shortcode( '[contact-form-7 id="16" title="главная форма"]');  ?>
+  <?php if(carbon_get_theme_option('footer_contactform_shotcode')){?>
+        <div id="contactForm">
+          <?php $footer_contactform_shotcode = carbon_get_theme_option('footer_contactform_shotcode'); echo do_shortcode( $footer_contactform_shotcode);  ?>
         </div>
+        <?php } ?>
       </div>
+
+
 
       <div class="contact_block_right">
         <div class="contact-item">

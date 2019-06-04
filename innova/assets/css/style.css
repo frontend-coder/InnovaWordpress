@@ -207,9 +207,30 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	background-size: cover;
 	-o-background-size: cover;
 }
+.intro_error {
+
+height: 100vh;
+position: relative;
+text-align: center;
+
+}
+
 .intro .overlay {
 	background: rgba(0,0,0,0.3);
+
 }
+
+.intro_error .overlay {
+	background: rgba(0,0,0,0.3);
+width: 100%;
+height: 100%;
+padding: 0;
+margin: 0;
+position: absolute;
+top: 0;
+left: 0;
+}
+
 .intro h1 {
 	font-family: 'Montserrat', sans-serif;
 	color: #fff;
@@ -235,8 +256,34 @@ header .intro-text {
 	text-align: center;
 }
 /* Get Touch Section */
+.get_touch_box_404 {
+position: relative;
+display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+justify-content: space-around;
+align-content: center;
+height: 100vh;
+}
+.get_touch_box_404 .get_touch_box_righr,
+.get_touch_box_404 .get_touch_box_left {
 
-
+        align-self: center;
+        }
+        h3.page-title {
+color: #fff;
+        }
+.row_center {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+	position: relative;
+}
 
 
 #get-touch .get_touch_box {
@@ -617,7 +664,19 @@ width: 66%;
 width: 34%;
 padding-left: 5%;
 }
+.cont_form_wrap {
+		display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content:space-between;
+	flex-wrap:wrap;
+}
+.cont_form_input {
+	width:48%;
 
+}
 /* Footer Section*/
 #footer {
 	background: #f6f6f6;

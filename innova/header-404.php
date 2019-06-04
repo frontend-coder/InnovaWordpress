@@ -55,13 +55,11 @@
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-
         <?php if(carbon_get_theme_option('site_logo')){?>
           <a class="navbar-brand page-scroll" href="#page-top"><?php echo esc_attr(carbon_get_theme_option('site_logo')); ?></a>
         <?php } else { ?>
           <?php echo 'innova'; ?>
         <?php } ?>
-        
         <div class="phone">
           <?php if(carbon_get_theme_option('header_voice')){?>
             <span><?php echo  esc_attr(carbon_get_theme_option('header_voice')); ?></span>
@@ -95,22 +93,24 @@
 </nav>
 <!-- Header -->
 <header id="header">
+
+
   <?php if(carbon_get_theme_option('header_fon')){?>
-    <div class="intro" style="background-image: url('<?php echo  esc_url(carbon_get_theme_option('header_fon')); ?>')">
+    <div class="intro intro_error" style="background-image: url('<?php echo  esc_url(carbon_get_theme_option('header_fon')); ?>')">
     <?php } ?>
     <div class="overlay">
       <div class="container">
-        <div class="row">
-          <div class="col-md-8 col-md-offset-2 intro-text">
-            <?php if(carbon_get_theme_option('header_title')){?>
-              <h1><?php echo carbon_get_theme_option('header_title'); ?></h1>
-            <?php } ?>
-            <?php if(carbon_get_theme_option('header_area')){?>
-              <p><?php echo carbon_get_theme_option('header_area'); ?></p>
-            <?php } ?>
-            <?php if(carbon_get_theme_option('header_button')){?>
-              <a href="#about" class="btn btn-custom btn-lg page-scroll"><?php echo carbon_get_theme_option('header_button'); ?></a> </div>
-            <?php } ?>
+        <div class="row row_center">
+
+   <div class="get_touch_box get_touch_box_404">
+        <div class="get_touch_box_left">
+      <h3 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'innova' ); ?></h3>
+    </div>
+    <div class="get_touch_box_righr">
+<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'innova' ); ?></p>
+   </div>
+ </div>
+
           </div>
         </div>
       </div>
